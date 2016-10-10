@@ -1,0 +1,6 @@
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\bin\Debug\Programming1FinalProject.exe.config
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\bin\Debug\Programming1FinalProject.exe
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\bin\Debug\Programming1FinalProject.pdb
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.csprojResolveAssemblyReference.cache
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.exe
+C:\Users\Nick Taylor\Desktop\Programming1FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.pdb
