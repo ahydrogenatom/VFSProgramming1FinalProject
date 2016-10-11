@@ -26,9 +26,6 @@ namespace Programming1FinalProject
             m_iEnemyPosY = iPosY; // the y position that the enemy spawns in
 
             m_iRangeOfSight = 2; // the range that the enemy can see around them in
-
-            
-
             m_bIsVisible = isPlayerInRange(iPlayerX, iPlayerY) ; // can the enemy see the player
     }
 
@@ -94,7 +91,7 @@ namespace Programming1FinalProject
             {
                 if (iPlayerY == m_iEnemyPosY - iRangeStep || iPlayerY == m_iEnemyPosY + iRangeStep)
                 {
-                    if (iPlayerX >= m_iEnemyPosX - (m_iRangeOfSight + iRangeStep) && iPlayerX <= m_iEnemyPosX + (m_iRangeOfSight - iRangeStep))
+                    if (iPlayerX >= (m_iEnemyPosX - m_iRangeOfSight) + iRangeStep && iPlayerX <= (m_iEnemyPosX + m_iRangeOfSight) - iRangeStep)
                     {
                         return true;
                     }
