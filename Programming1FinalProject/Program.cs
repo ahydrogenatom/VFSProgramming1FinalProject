@@ -155,6 +155,7 @@ namespace Programming1FinalProject
                                 using (var image = Properties.Resources.Rock_1)
                                     graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
                                 break;
+                                
                             }
 
                         case TileType.ROAD:
