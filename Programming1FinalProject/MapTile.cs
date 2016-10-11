@@ -19,6 +19,8 @@ namespace Programming1FinalProject
 
         private bool isPassable;
 
+        private bool isVisible;
+
 
         //CONSTRUCTOR
         public MapTile(int xCoordinate, int yCoordinate, TileType newTileType)
@@ -34,6 +36,8 @@ namespace Programming1FinalProject
                 isPassable = true;
             }
             else isPassable = false;
+
+            isVisible = false;
 
         }
 

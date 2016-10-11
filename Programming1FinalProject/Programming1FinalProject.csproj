@@ -48,10 +48,69 @@
     <Compile Include="MapTile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TileType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\testImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nick_mage_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nick_mage_2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Character.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\End.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enemy 2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enemy 3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Enemy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grass.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Item Box.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Road.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rock 1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Start.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Water.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fog.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

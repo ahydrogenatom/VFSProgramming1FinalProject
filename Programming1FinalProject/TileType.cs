@@ -9,7 +9,7 @@ namespace Programming1FinalProject
     enum TileType
     {
 
-        GRASS, ROAD, ROCK, ITEMBOX, WATER, START, SAFEZONE
+        GRASS, ROAD, ROCK, ITEMBOX, WATER, START, SAFEZONE, PLAYER, ENEMY, FOG
     }
 
 
