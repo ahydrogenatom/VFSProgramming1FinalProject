@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,26 +7,51 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
+
+
+
+
 namespace Programming1FinalProject
 {
+
+    
+
+
+
     class Program
     {
+
+        //get console window to create graphics object on
+        [DllImport("kernel32.dll", EntryPoint = "GetConsoleWindow", SetLastError = true)]
+        private static extern IntPtr GetConsoleHandle();
+
+
+
 
         //PRIVATE MEMBER VARIABLES
         private static MapTile[,] theMap;
         private static int xDimensions = 30;
         private static int yDimensions = 30;
 
+        private static int imageSizeX = 16;
+        private static int imageSizeY = 16;
+
         static void Main(string[] args)
         {
 
             //TEST print a test map of all grass
 
+            //var windowHandler = GetConsoleHandle();
 
+            //using (var graphics = Graphics.FromHwnd(windowHandler))
+            // using (var image = Properties.Resources.nick_mage_21) 
+            //    graphics.DrawImage(image, 0, 0, 128, 128);
 
-            createMap();
+            Console.WriteLine("Please maximize screen");
+            Console.ReadLine();
+                createMap();
 
-            printMap();
+            drawMap();
 
             Console.ReadLine();
         }
@@ -34,6 +60,9 @@ namespace Programming1FinalProject
         //create the array of MapTiles that represent the in game map
         static void createMap()
         {
+
+
+            
             Random RNG = new Random();
 
 
@@ -85,12 +114,19 @@ namespace Programming1FinalProject
                     theMap[i, j] = new MapTile(i, j, newTile);
                 }
             }
+            
 
+
+            //TODO
+            //create map array here
+            //use the variable 'theMap'
         }
 
         //prints the map to the console
-        static void printMap()
+        static void drawMap()
         {
+
+            var windowHandler = GetConsoleHandle();
 
             //current MapTile
             MapTile currentMapTile;
@@ -107,16 +143,83 @@ namespace Programming1FinalProject
                     {
                         case TileType.GRASS:
                             {
-                                Console.Write("G ");
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Grass)
+                                    graphics.DrawImage(image, i*16, j*16, imageSizeX, imageSizeY);
                                 break;
                             }
 
                         case TileType.ROCK:
                             {
-                                Console.Write("R ");
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Rock_1)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
                                 break;
                             }
 
+                        case TileType.ROAD:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Road)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.ITEMBOX:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Item_Box)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.PLAYER:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Character)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.WATER:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Water)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.SAFEZONE:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.End)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.START:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Start)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.ENEMY:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Enemy)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
+
+                        case TileType.FOG:
+                            {
+                                using (var graphics = Graphics.FromHwnd(windowHandler))
+                                using (var image = Properties.Resources.Start)
+                                    graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
+                                break;
+                            }
                         default:
                             {
                                 Console.Write("  ");
