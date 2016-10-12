@@ -58,6 +58,11 @@ namespace Programming1FinalProject
             myType = newType;
         }
 
+        public void setIsVisible(bool visibility)
+        {
+            isVisible = visibility;
+        }
+
 
         public int getXCoord()
         {
@@ -80,5 +85,11 @@ namespace Programming1FinalProject
         }
 
            
+        public bool getIsVisible()
+        {
+            return isVisible;
+        }
+
+        
     }
 }
