@@ -158,7 +158,12 @@ namespace Programming1FinalProject
         //create the array of MapTiles that represent the in game map
         static void createMap()
         {
-            //Random RNG = new Random();
+            //TESTING: getting map from file
+            //string mapFromTxt = Properties.Resources.mapText;
+
+
+
+
             theMapOriginal = new MapTile[xDimensions, yDimensions];
 
             theMap = new MapTile[xDimensions, yDimensions];

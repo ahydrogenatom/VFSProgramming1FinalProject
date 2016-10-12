@@ -151,6 +151,26 @@ namespace Programming1FinalProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  [0, 0]  0, 0, TileType.START  
+        ///             [0, 1]  0, 1, TileType.GRASS  
+        ///             [0, 2]  0, 2, TileType.GRASS  
+        ///             [0, 3]  0, 3, TileType.GRASS  
+        ///             [0, 4]  0, 4, TileType.GRASS  
+        ///             [0, 5]  0, 5, TileType.GRASS  
+        ///             [0, 6]  0, 6, TileType.GRASS  
+        ///             [0, 7]  0, 7, TileType.GRASS  
+        ///             [0, 8]  0, 8, TileType.ROCK  
+        ///             [0, 9]  0, 9, TileType.ROCK  
+        ///             [0, 10]  0, 10, TileType.ROCK  
+        ///             [0, 11]  0, 11, T [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string mapText {
+            get {
+                return ResourceManager.GetString("mapText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Road {
