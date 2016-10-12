@@ -80,10 +80,10 @@ namespace Programming1FinalProject
             {
 
                 // if player visible then check which MapTiles around enemy are passable
-                bool bIsUpPassable = up.getPassable();
-                bool bIsDownPassable = down.getPassable();
-                bool bIsLeftPassable = left.getPassable();
-                bool bIsRightPassable = right.getPassable();
+                bool bIsUpPassable = up.getIsEnemyPassable();
+                bool bIsDownPassable = down.getIsEnemyPassable();
+                bool bIsLeftPassable = left.getIsEnemyPassable();
+                bool bIsRightPassable = right.getIsEnemyPassable();
 
                 // take into account own position and players position and select tile to move onto that would make enemy come closest possible
                 
