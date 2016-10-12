@@ -6,3 +6,11 @@ C:\Users\GD45Nick\Desktop\Programming1\FinalProject\Programming1FinalProject\obj
 C:\Users\GD45Nick\Desktop\Programming1\FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.exe
 C:\Users\GD45Nick\Desktop\Programming1\FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.pdb
 C:\Users\GD45Nick\Desktop\Programming1\FinalProject\Programming1FinalProject\obj\Debug\Programming1FinalProject.csprojResolveAssemblyReference.cache
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\bin\Debug\Programming1FinalProject.exe.config
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\obj\Debug\Programming1FinalProject.exe
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\obj\Debug\Programming1FinalProject.pdb
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\bin\Debug\Programming1FinalProject.exe
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\bin\Debug\Programming1FinalProject.pdb
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\obj\Debug\Programming1FinalProject.csprojResolveAssemblyReference.cache
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\obj\Debug\Programming1FinalProject.Properties.Resources.resources
+C:\Users\gd45nick\Desktop\Programming1Final\Programming1FinalProject\obj\Debug\Programming1FinalProject.csproj.GenerateResource.Cache
