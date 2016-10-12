@@ -17,7 +17,9 @@ namespace Programming1FinalProject
 
         private TileType myType;
 
-        private bool isPassable;
+        private bool isPassable = false;
+
+        private bool isEnemyPassable = false;
 
         private bool isVisible;
 
@@ -30,12 +32,19 @@ namespace Programming1FinalProject
             setYCoord(yCoordinate);
             setTileType(newTileType);
 
-            //set if the tile is passable
+            //set if the tile is passable for the player
             if (myType == TileType.GRASS || myType == TileType.ROAD || myType == TileType.ITEMBOX || myType == TileType.SAFEZONE)
             {
                 isPassable = true;
             }
             else isPassable = false;
+
+            //set if the tile is passable for the enemies
+            if (myType == TileType.GRASS || myType == TileType.ROAD)
+            {
+                isEnemyPassable = true;
+            }
+            else isEnemyPassable = false;
 
             isVisible = false;
 
@@ -82,6 +91,11 @@ namespace Programming1FinalProject
         public bool getPassable()
         {
             return isPassable;
+        }
+
+        public bool getIsEnemyPassable()
+        {
+            return isEnemyPassable;
         }
 
            
