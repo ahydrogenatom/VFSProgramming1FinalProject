@@ -209,7 +209,7 @@ namespace Programming1FinalProject
             theMapOriginal[1, 4] = new MapTile(1, 4, TileType.GRASS);
             theMapOriginal[1, 5] = new MapTile(1, 5, TileType.GRASS);
             theMapOriginal[1, 6] = new MapTile(1, 6, TileType.GRASS);
-            theMapOriginal[1, 7] = new MapTile(1, 7, TileType.GRASS);
+            theMapOriginal[1, 7] = new MapTile(1, 7, TileType.ITEMBOX);
             theMapOriginal[1, 8] = new MapTile(1, 8, TileType.GRASS);
             theMapOriginal[1, 9] = new MapTile(1, 9, TileType.ROCK);
             theMapOriginal[1, 10] = new MapTile(1, 10, TileType.ROCK);
@@ -222,7 +222,7 @@ namespace Programming1FinalProject
             theMapOriginal[1, 17] = new MapTile(1, 17, TileType.GRASS);
             theMapOriginal[1, 18] = new MapTile(1, 18, TileType.GRASS);
             theMapOriginal[1, 19] = new MapTile(1, 19, TileType.GRASS);
-            theMapOriginal[1, 20] = new MapTile(1, 20, TileType.GRASS);
+            theMapOriginal[1, 20] = new MapTile(1, 20, TileType.ITEMBOX);
             theMapOriginal[1, 21] = new MapTile(1, 21, TileType.GRASS);
             theMapOriginal[1, 22] = new MapTile(1, 22, TileType.GRASS);
             theMapOriginal[1, 23] = new MapTile(1, 23, TileType.GRASS);
@@ -324,7 +324,7 @@ namespace Programming1FinalProject
             theMapOriginal[4, 23] = new MapTile(4, 23, TileType.GRASS);
             theMapOriginal[4, 24] = new MapTile(4, 24, TileType.ROCK);
             theMapOriginal[4, 25] = new MapTile(4, 25, TileType.ROCK);
-            theMapOriginal[4, 26] = new MapTile(4, 26, TileType.GRASS);
+            theMapOriginal[4, 26] = new MapTile(4, 26, TileType.ITEMBOX);
             theMapOriginal[4, 27] = new MapTile(4, 27, TileType.GRASS);
             theMapOriginal[4, 28] = new MapTile(4, 28, TileType.GRASS);
             theMapOriginal[4, 29] = new MapTile(4, 29, TileType.GRASS);
@@ -342,7 +342,7 @@ namespace Programming1FinalProject
             theMapOriginal[5, 9] = new MapTile(5, 9, TileType.GRASS);
             theMapOriginal[5, 10] = new MapTile(5, 10, TileType.GRASS);
             theMapOriginal[5, 11] = new MapTile(5, 11, TileType.GRASS);
-            theMapOriginal[5, 12] = new MapTile(5, 12, TileType.ROCK);
+            theMapOriginal[5, 12] = new MapTile(5, 12, TileType.ITEMBOX);
             theMapOriginal[5, 13] = new MapTile(5, 13, TileType.ROCK);
             theMapOriginal[5, 14] = new MapTile(5, 14, TileType.ROCK);
             theMapOriginal[5, 15] = new MapTile(5, 15, TileType.GRASS);
@@ -395,7 +395,7 @@ namespace Programming1FinalProject
 
             // X = 7
             theMapOriginal[7, 0] = new MapTile(7, 0, TileType.GRASS);
-            theMapOriginal[7, 1] = new MapTile(7, 1, TileType.GRASS);
+            theMapOriginal[7, 1] = new MapTile(7, 1, TileType.ITEMBOX);
             theMapOriginal[7, 2] = new MapTile(7, 2, TileType.GRASS);
             theMapOriginal[7, 3] = new MapTile(7, 3, TileType.ROCK);
             theMapOriginal[7, 4] = new MapTile(7, 4, TileType.ROCK);
@@ -609,7 +609,7 @@ namespace Programming1FinalProject
             theMapOriginal[13, 20] = new MapTile(13, 20, TileType.GRASS);
             theMapOriginal[13, 21] = new MapTile(13, 21, TileType.GRASS);
             theMapOriginal[13, 22] = new MapTile(13, 22, TileType.GRASS);
-            theMapOriginal[13, 23] = new MapTile(13, 23, TileType.WATER);
+            theMapOriginal[13, 23] = new MapTile(13, 23, TileType.ITEMBOX);
             theMapOriginal[13, 24] = new MapTile(13, 24, TileType.WATER);
             theMapOriginal[13, 25] = new MapTile(13, 25, TileType.WATER);
             theMapOriginal[13, 26] = new MapTile(13, 26, TileType.WATER);
@@ -622,7 +622,7 @@ namespace Programming1FinalProject
             theMapOriginal[14, 1] = new MapTile(14, 1, TileType.GRASS);
             theMapOriginal[14, 2] = new MapTile(14, 2, TileType.GRASS);
             theMapOriginal[14, 3] = new MapTile(14, 3, TileType.GRASS);
-            theMapOriginal[14, 4] = new MapTile(14, 4, TileType.GRASS);
+            theMapOriginal[14, 4] = new MapTile(14, 4, TileType.ITEMBOX);
             theMapOriginal[14, 5] = new MapTile(14, 5, TileType.GRASS);
             theMapOriginal[14, 6] = new MapTile(14, 6, TileType.GRASS);
             theMapOriginal[14, 7] = new MapTile(14, 7, TileType.WATER);
@@ -650,7 +650,7 @@ namespace Programming1FinalProject
             theMapOriginal[14, 29] = new MapTile(14, 29, TileType.ROCK);
 
             // X = 15
-            theMapOriginal[15, 0] = new MapTile(15, 0, TileType.ROCK);
+            theMapOriginal[15, 0] = new MapTile(15, 0, TileType.ITEMBOX);
             theMapOriginal[15, 1] = new MapTile(15, 1, TileType.ROCK);
             theMapOriginal[15, 2] = new MapTile(15, 2, TileType.GRASS);
             theMapOriginal[15, 3] = new MapTile(15, 3, TileType.GRASS);
@@ -753,7 +753,7 @@ namespace Programming1FinalProject
             theMapOriginal[18, 4] = new MapTile(18, 4, TileType.GRASS);
             theMapOriginal[18, 5] = new MapTile(18, 5, TileType.ROCK);
             theMapOriginal[18, 6] = new MapTile(18, 6, TileType.ROCK);
-            theMapOriginal[18, 7] = new MapTile(18, 7, TileType.GRASS);
+            theMapOriginal[18, 7] = new MapTile(18, 7, TileType.ITEMBOX);
             theMapOriginal[18, 8] = new MapTile(18, 8, TileType.GRASS);
             theMapOriginal[18, 9] = new MapTile(18, 9, TileType.GRASS);
             theMapOriginal[18, 10] = new MapTile(18, 10, TileType.WATER);
@@ -774,7 +774,7 @@ namespace Programming1FinalProject
             theMapOriginal[18, 25] = new MapTile(18, 25, TileType.GRASS);
             theMapOriginal[18, 26] = new MapTile(18, 26, TileType.GRASS);
             theMapOriginal[18, 27] = new MapTile(18, 27, TileType.GRASS);
-            theMapOriginal[18, 28] = new MapTile(18, 28, TileType.GRASS);
+            theMapOriginal[18, 28] = new MapTile(18, 28, TileType.ITEMBOX);
             theMapOriginal[18, 29] = new MapTile(18, 29, TileType.GRASS);
 
             // X = 19
@@ -833,7 +833,7 @@ namespace Programming1FinalProject
             theMapOriginal[20, 20] = new MapTile(20, 20, TileType.GRASS);
             theMapOriginal[20, 21] = new MapTile(20, 21, TileType.GRASS);
             theMapOriginal[20, 22] = new MapTile(20, 22, TileType.ROCK);
-            theMapOriginal[20, 23] = new MapTile(20, 23, TileType.ROCK);
+            theMapOriginal[20, 23] = new MapTile(20, 23, TileType.ITEMBOX);
             theMapOriginal[20, 24] = new MapTile(20, 24, TileType.GRASS);
             theMapOriginal[20, 25] = new MapTile(20, 25, TileType.GRASS);
             theMapOriginal[20, 26] = new MapTile(20, 26, TileType.GRASS);
@@ -887,7 +887,7 @@ namespace Programming1FinalProject
             theMapOriginal[22, 10] = new MapTile(22, 10, TileType.WATER);
             theMapOriginal[22, 11] = new MapTile(22, 11, TileType.WATER);
             theMapOriginal[22, 12] = new MapTile(22, 12, TileType.WATER);
-            theMapOriginal[22, 13] = new MapTile(22, 13, TileType.WATER);
+            theMapOriginal[22, 13] = new MapTile(22, 13, TileType.ITEMBOX);
             theMapOriginal[22, 14] = new MapTile(22, 14, TileType.WATER);
             theMapOriginal[22, 15] = new MapTile(22, 15, TileType.WATER);
             theMapOriginal[22, 16] = new MapTile(22, 16, TileType.WATER);
@@ -906,7 +906,7 @@ namespace Programming1FinalProject
             theMapOriginal[22, 29] = new MapTile(22, 29, TileType.GRASS);
 
             // X = 23
-            theMapOriginal[23, 0] = new MapTile(23, 0, TileType.GRASS);
+            theMapOriginal[23, 0] = new MapTile(23, 0, TileType.ITEMBOX);
             theMapOriginal[23, 1] = new MapTile(23, 1, TileType.GRASS);
             theMapOriginal[23, 2] = new MapTile(23, 2, TileType.ROCK);
             theMapOriginal[23, 3] = new MapTile(23, 3, TileType.ROCK);
@@ -932,7 +932,7 @@ namespace Programming1FinalProject
             theMapOriginal[23, 23] = new MapTile(23, 23, TileType.GRASS);
             theMapOriginal[23, 24] = new MapTile(23, 24, TileType.GRASS);
             theMapOriginal[23, 25] = new MapTile(23, 25, TileType.GRASS);
-            theMapOriginal[23, 26] = new MapTile(23, 26, TileType.ROCK);
+            theMapOriginal[23, 26] = new MapTile(23, 26, TileType.ITEMBOX);
             theMapOriginal[23, 27] = new MapTile(23, 27, TileType.ROCK);
             theMapOriginal[23, 28] = new MapTile(23, 28, TileType.GRASS);
             theMapOriginal[23, 29] = new MapTile(23, 29, TileType.GRASS);
@@ -1068,7 +1068,7 @@ namespace Programming1FinalProject
             // X = 28
             theMapOriginal[28, 0] = new MapTile(28, 0, TileType.GRASS);
             theMapOriginal[28, 1] = new MapTile(28, 1, TileType.GRASS);
-            theMapOriginal[28, 2] = new MapTile(28, 2, TileType.ROCK);
+            theMapOriginal[28, 2] = new MapTile(28, 2, TileType.ITEMBOX);
             theMapOriginal[28, 3] = new MapTile(28, 3, TileType.ROCK);
             theMapOriginal[28, 4] = new MapTile(28, 4, TileType.ROCK);
             theMapOriginal[28, 5] = new MapTile(28, 5, TileType.ROCK);
@@ -1105,7 +1105,7 @@ namespace Programming1FinalProject
             theMapOriginal[29, 4] = new MapTile(29, 4, TileType.ROCK);
             theMapOriginal[29, 5] = new MapTile(29, 5, TileType.ROCK);
             theMapOriginal[29, 6] = new MapTile(29, 6, TileType.ROCK);
-            theMapOriginal[29, 7] = new MapTile(29, 7, TileType.GRASS);
+            theMapOriginal[29, 7] = new MapTile(29, 7, TileType.ITEMBOX);
             theMapOriginal[29, 8] = new MapTile(29, 8, TileType.GRASS);
             theMapOriginal[29, 9] = new MapTile(29, 9, TileType.GRASS);
             theMapOriginal[29, 10] = new MapTile(29, 10, TileType.GRASS);
@@ -1121,7 +1121,7 @@ namespace Programming1FinalProject
             theMapOriginal[29, 20] = new MapTile(29, 20, TileType.GRASS);
             theMapOriginal[29, 21] = new MapTile(29, 21, TileType.ROCK);
             theMapOriginal[29, 22] = new MapTile(29, 22, TileType.ROCK);
-            theMapOriginal[29, 23] = new MapTile(29, 23, TileType.ROCK);
+            theMapOriginal[29, 23] = new MapTile(29, 23, TileType.ITEMBOX);
             theMapOriginal[29, 24] = new MapTile(29, 24, TileType.GRASS);
             theMapOriginal[29, 25] = new MapTile(29, 25, TileType.GRASS);
             theMapOriginal[29, 26] = new MapTile(29, 26, TileType.GRASS);
