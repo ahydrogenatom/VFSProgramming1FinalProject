@@ -8,6 +8,6 @@ namespace Programming1FinalProject
 {
     enum ControlDirection
     {
-        UP, DOWN, LEFT, RIGHT
+        UP, DOWN, LEFT, RIGHT, NULL
     }
 }

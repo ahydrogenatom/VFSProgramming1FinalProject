@@ -45,27 +45,31 @@ namespace Programming1FinalProject
         private static int playerXCoord;
         private static int playerYCoord;
 
+        private static Random RNG;
+
+        //static Enemy[] enemiesArray = new Enemy[17];
+
         static void Main(string[] args)
         {
             // start - checking enemy movement
             // create an array of enemies with their starting locations
-            Enemy[] enemiesArray = {new Enemy(2, 3),
-                                    new Enemy(9, 0),
-                                    new Enemy(14, 4),
-                                    new Enemy(6, 10),
-                                    new Enemy(0, 14),
-                                    new Enemy(8, 16),
-                                    new Enemy(3, 21),
-                                    new Enemy(13, 21),
-                                    new Enemy(2, 27),
-                                    new Enemy(17, 27),
-                                    new Enemy(25, 1),
-                                    new Enemy(24, 6),
-                                    new Enemy(27, 14),
-                                    new Enemy(24, 20),
-                                    new Enemy(25, 26),
-                                    new Enemy(26, 29),
-                                    new Enemy(29, 26)};
+           Enemy[] enemiesArray = { new Enemy(2, 3, 0),
+                                    new Enemy(9, 0, 1),
+                                    new Enemy(14, 4, 2),
+                                    new Enemy(6, 10, 3),
+                                    new Enemy(0, 14, 4),
+                                    new Enemy(8, 16, 5),
+                                    new Enemy(3, 21, 6),
+                                    new Enemy(13, 21, 7),
+                                    new Enemy(2, 27, 8),
+                                    new Enemy(17, 27, 9),
+                                    new Enemy(25, 1, 10),
+                                    new Enemy(24, 6, 11),
+                                    new Enemy(27, 14, 12),
+                                    new Enemy(24, 20, 13),
+                                    new Enemy(25, 26, 14),
+                                    new Enemy(26, 29, 15),
+                                    new Enemy(29, 26, 16)};
 
             //Enemy E1 = new Enemy(2, 4);
             // end - checking enemy movement
@@ -88,7 +92,7 @@ namespace Programming1FinalProject
 
             drawMap();
 
-
+            RNG = new Random();
 
             Console.SetCursorPosition(60, 60);
            // Console.WriteLine("Press enter to start the game");
@@ -137,21 +141,21 @@ namespace Programming1FinalProject
                     int[] enemiesNextTileLeft = new int[17];
                     int[] enemiesNextTileRight = new int[17];
 
-                    foreach (int i in enemyX)
+                    for (int i = 0; i < enemyX.Length; i++)
                     { enemyX[i] = enemiesArray[i].GetPosX(); }
-                    foreach (int i in enemyY)
+                    for (int i = 0; i < enemyY.Length; i++)
                     { enemyY[i] = enemiesArray[i].GetPosY(); }
 
-                    foreach (int i in enemiesNextTileUp)
+                    for (int i = 0; i < enemiesNextTileUp.Length; i++)
                     { enemiesNextTileUp[i] = enemyY[i] + 1; }
-                    foreach (int i in enemiesNextTileDown)
+                    for (int i = 0; i < enemiesNextTileDown.Length; i++)
                     { enemiesNextTileDown[i] = enemyY[i] - 1; }
-                    foreach (int i in enemiesNextTileLeft)
+                    for (int i = 0; i < enemiesNextTileLeft.Length; i++)
                     { enemiesNextTileLeft[i] = enemyX[i] - 1; }
-                    foreach (int i in enemiesNextTileRight)
+                    for (int i = 0; i < enemiesNextTileRight.Length; i++)
                     { enemiesNextTileRight[i] = enemyX[i] + 1; }
 
-                    foreach (int i in enemyX)
+                    for (int i = 0; i < enemyY.Length; i++)
                     {
                         if (enemyX[i] == 0)
                         {
@@ -163,15 +167,15 @@ namespace Programming1FinalProject
                         }
                     }
 
-                    foreach (int i in enemyY)
+                    for (int i = 0; i < enemyY.Length; i++)
                     {
                         if (enemyY[i] == 0)
                         {
-                            enemiesNextTileUp[i] = enemyY[i];
+                            enemiesNextTileDown[i] = enemyY[i];
                         }
                         if (enemyY[i] == (yDimensions - 1))
                         {
-                            enemiesNextTileDown[i] = enemyY[i];
+                            enemiesNextTileUp[i] = enemyY[i];
                         }
                     }
 
@@ -204,8 +208,145 @@ namespace Programming1FinalProject
                     */
 
                     ConsoleKeyInfo currentKey = Console.ReadKey(true);
-                    //player goes UP
-                    if ((currentKey.Key == ConsoleKey.W) && moveIsValid(playerXCoord, playerYCoord, ControlDirection.UP))
+
+                    //player enters combat
+
+                    //COMBAT OPTIONS
+                    if ((currentKey.Key == ConsoleKey.Spacebar) && enemyIsAdjacent())
+                    {
+                        Enemy currentOpponent = getAdjacentEnemy(enemiesArray);
+                        bool outOfCombat = false;
+                        string selectedCombatAction;
+
+                        Console.Clear();
+                        //combat loop
+                        while(outOfCombat == false)
+                        {
+                            
+                            printCombatMenu();
+                            
+                            Console.WriteLine("Current Player HP: 5");
+                            Console.WriteLine("Current Slime HP: " + currentOpponent.GetHealth());
+                            bool validCombatAction = false;
+                            //loop until valid combat selection is given
+                            while(validCombatAction == false)
+                            {
+                                selectedCombatAction = Console.ReadLine();
+                                Console.Clear();
+                                switch (selectedCombatAction)
+                                {
+                                    case "1":
+                                        {
+                                            Console.WriteLine("You lunge at the mighty slime with a precise stab!");
+                                            int combatOutcome = RNG.Next(1, 4);
+                                            if(combatOutcome == 1)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                Console.WriteLine("You land a perfect hit!");
+                                            }
+                                            else if(combatOutcome == 2)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                Console.WriteLine("You land a glancing blow!");
+                                            }
+                                            else
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.SETHEALTH()
+                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                Console.WriteLine("You miss, and the slime covers you in acid!");
+                                            }
+                                            validCombatAction = true;
+                                            break;
+                                        }
+
+                                    case "2":
+                                        {
+                                            Console.WriteLine("You lunge at the mighty slime with a heavy slash!");
+                                            int combatOutcome = RNG.Next(1, 4);
+                                            if (combatOutcome == 1)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                Console.WriteLine("You land a perfect hit!");
+                                            }
+                                            else if (combatOutcome == 2)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                Console.WriteLine("You land a glancing blow!");
+                                            }
+                                            else
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.SETHEALTH()
+                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                Console.WriteLine("You miss, and the slime covers you in acid!");
+                                            }
+                                            validCombatAction = true;
+                                            break;
+                                        }
+
+                                    case "3":
+                                        {
+                                            Console.WriteLine("You lunge at the mighty slime with a heavy blow!!");
+                                            int combatOutcome = RNG.Next(1, 4);
+                                            if (combatOutcome == 1)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                Console.WriteLine("You land a perfect hit!");
+                                            }
+                                            else if (combatOutcome == 2)
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.GETDAMAGE()
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                Console.WriteLine("You land a glancing blow!");
+                                            }
+                                            else
+                                            {
+                                                //TODO
+                                                //INPUT CHARACTER.SETHEALTH()
+                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                Console.WriteLine("You miss, and the slime covers you in acid!");
+                                            }
+                                            validCombatAction = true;
+                                            break;
+                                        }
+
+                                    default:
+                                        {
+                                            Console.WriteLine("That is not a valid combat action.");
+                                            Console.WriteLine("Please select a valid option, from 1 to 3.");
+                                            break;
+                                        }
+                                }
+
+                                if(currentOpponent.GetHealth() <= 0)
+                                {
+                                    killEnemy(currentOpponent.GetEnemyID(), enemiesArray);
+                                    Console.WriteLine("You have slain the mighty slime!");
+                                    outOfCombat = true;
+
+                                }
+                            }
+                        }
+                        for (int i = 0; i < 10; i++)
+                        {
+                            drawMap();
+                        }
+                    }
+
+                        //player goes UP
+                        if ((currentKey.Key == ConsoleKey.W) && moveIsValid(playerXCoord, playerYCoord, ControlDirection.UP))
                     {
                         //set the space under the player back to what it was on the map
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
@@ -213,31 +354,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord, playerYCoord - 1);
-<<<<<<< HEAD
                         //drawMap();
-=======
-                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
-
-
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-                        theMap[E1NewX, E1NewY].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-                        theMap[E1X, E1Y].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        drawMap();
->>>>>>> b7d175ca9be3e0f7fc6eee52e95092b152d183d5
                     }
 
                     //player goes RIGHT
@@ -249,29 +366,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord + 1, playerYCoord);
-<<<<<<< HEAD
                         //drawMap();
-=======
-                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
-
-                       // Move enemy every time the player moves
-                       E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-                        theMap[E1NewX, E1NewY].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-                        theMap[E1X, E1Y].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        drawMap();
->>>>>>> b7d175ca9be3e0f7fc6eee52e95092b152d183d5
                     }
 
                     //player goes LEFT
@@ -283,29 +378,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord - 1, playerYCoord);
-<<<<<<< HEAD
                         //drawMap();
-=======
-                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-                        theMap[E1NewX, E1NewY].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-                        theMap[E1X, E1Y].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        drawMap();
->>>>>>> b7d175ca9be3e0f7fc6eee52e95092b152d183d5
                     }
 
                     //player goes DOWN
@@ -317,69 +390,210 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord, playerYCoord + 1);
-<<<<<<< HEAD
                         //drawMap();
                     }
 
                     for (int i = 0; i < enemiesArray.Length; i++)
                     {
-                        enemiesArray[i].MoveEnemy(playerXCoord, playerYCoord, theMap[enemyX[i], enemiesNextTileUp[i]], theMap[enemyX[i], enemiesNextTileDown[i]], theMap[enemiesNextTileLeft[i], enemyY[i]], theMap[enemiesNextTileRight[i], enemyY[i]]);
-=======
-                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
->>>>>>> b7d175ca9be3e0f7fc6eee52e95092b152d183d5
-
-                        int enemyNewX = enemiesArray[i].GetPosX();
-                        int enemyNewY = enemiesArray[i].GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-<<<<<<< HEAD
-                        theMap[enemyNewX, enemyNewY].setTileType(TileType.ENEMY);
-
-                        if (enemyNewX == enemyX[i] && enemyNewY == enemyY[i])
-                        { }
-                        else
+                        if (enemiesArray[i].GetIsAlive() == true)
                         {
-                            // Change tile that enemy was on back to original
-                            theMap[enemyX[i], enemyY[i]].setTileType(theMapOriginal[enemyX[i], enemyY[i]].getTileType());
+                            theMap[playerXCoord, playerYCoord].checkPassableEnemy();
+                            enemiesArray[i].MoveEnemy(playerXCoord, playerYCoord, theMap[enemyX[i], enemiesNextTileUp[i]], theMap[enemyX[i], enemiesNextTileDown[i]], theMap[enemiesNextTileLeft[i], enemyY[i]], theMap[enemiesNextTileRight[i], enemyY[i]]);
+
+                            // Move enemy every time the player moves
+                            //E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
+
+                            int enemyNewX = enemiesArray[i].GetPosX();
+                            int enemyNewY = enemiesArray[i].GetPosY();
+
+                            // Change tile where enemy moves to enemy type
+                            theMap[enemyNewX, enemyNewY].setTileType(TileType.ENEMY);
+                            theMap[enemyNewX, enemyNewY].checkPassable();
+                            theMap[enemyNewX, enemyNewY].checkPassableEnemy();
+
+                            if (enemyNewX == enemyX[i] && enemyNewY == enemyY[i])
+                            { }
+                            else
+                            {
+                                // Change tile that enemy was on back to original
+                                theMap[enemyX[i], enemyY[i]].setTileType(theMapOriginal[enemyX[i], enemyY[i]].getTileType());
+                                theMap[enemyX[i], enemyY[i]].checkPassable();
+                                theMap[enemyNewX, enemyNewY].checkPassableEnemy();
+                            }
+
+
+                            
                         }
                     }
-=======
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-                        theMap[E1NewX, E1NewY].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-                        theMap[E1X, E1Y].checkPassable();
-                        theMap[E1NewX, E1NewY].checkPassableEnemy();
->>>>>>> b7d175ca9be3e0f7fc6eee52e95092b152d183d5
-
-                    // Move enemy every time the player moves
-               //     E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                    // Get new position of enemy
-               //     int E1NewX = E1.GetPosX();
-               //     int E1NewY = E1.GetPosY();
-
-                    // Change tile where enemy moves to enemy type
-               //     theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-
-               //     if (E1NewX == E1X && E1NewY == E1Y)
-               //     { }
-               //     else
-               //     {
-                        // Change tile that enemy was on back to original
-               //         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-               //     }
-
                     drawMap();
                 }
+
+                if((playerXCoord == 29) && (playerYCoord == 29))
+                {
+                    isPlaying = false;
+                }
             }
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("You have survived the dusk!");
+            Console.ReadLine();
             
         }
 
+        //removes an enemy from the map
+        static void killEnemy(int enemyID, Enemy[] enemies)
+        {
+            int enemyX = enemies[enemyID].GetPosX();
+            int enemyY = enemies[enemyID].GetPosY();
+
+            theMap[enemyX, enemyY].setTileType(TileType.GRASS);
+            theMap[enemyX, enemyY].checkPassable();
+
+            enemies[enemyID].SetIsAlive(false);
+        }
+
+        //print combat menu to the player
+        static void printCombatMenu()
+        {
+           // Console.SetCursorPosition(40, 0);
+            Console.WriteLine("You have encountered a devious slime!");
+            Console.WriteLine("Combat Options:");
+            Console.WriteLine("1. Pierce");
+            Console.WriteLine("2. Slash");
+            Console.WriteLine("3. Bludgeon");
+            
+        }
+
+        //check if an enemy is adjacent to the player
+        static bool enemyIsAdjacent()
+        {
+            bool isAdjacent = false;
+            //check if up is in bounds
+            if ((playerYCoord - 1) >= 0)
+            {
+                if(theMap[playerXCoord, playerYCoord-1].getTileType() == TileType.ENEMY)
+                {
+                    isAdjacent = true;
+                }
+            }
+                //check if left is in bounds
+            if ((playerXCoord - 1) >= 0)
+            {
+                if (theMap[playerXCoord - 1, playerYCoord].getTileType() == TileType.ENEMY)
+                {
+                    isAdjacent = true;
+                }
+            }
+                    //check if right is in bounds
+            if ((playerXCoord + 1) <= (xDimensions - 1))
+            {
+                if (theMap[playerXCoord+1, playerYCoord].getTileType() == TileType.ENEMY)
+                {
+                    isAdjacent = true;
+                }
+            }
+                        //check if down is in bounds
+            if ((playerYCoord + 1) <= (yDimensions - 1))
+            {
+                if (theMap[playerXCoord, playerYCoord + 1].getTileType() == TileType.ENEMY)
+                {
+                    isAdjacent = true;
+                }
+            }
+
+            return isAdjacent;
+
+        }
+
+
+        //check where enemy is
+        static ControlDirection whereIsEnemy()
+        {
+            ControlDirection enemyDirection = ControlDirection.NULL;
+            //check if up is in bounds
+            if ((playerYCoord - 1) >= 0)
+            {
+                if (theMap[playerXCoord, playerYCoord - 1].getTileType() == TileType.ENEMY)
+                {
+                    enemyDirection = ControlDirection.UP; // up
+                }
+            }
+            //check if left is in bounds
+            if ((playerXCoord - 1) >= 0)
+            {
+                if (theMap[playerXCoord - 1, playerYCoord].getTileType() == TileType.ENEMY)
+                {
+                    enemyDirection = ControlDirection.LEFT; // left
+                }
+            }
+            //check if right is in bounds
+            if ((playerXCoord + 1) <= (xDimensions - 1))
+            {
+                if (theMap[playerXCoord + 1, playerYCoord].getTileType() == TileType.ENEMY)
+                {
+                    enemyDirection = ControlDirection.RIGHT; // right
+                }
+            }
+            //check if down is in bounds
+            if ((playerYCoord + 1) <= (yDimensions - 1))
+            {
+                if (theMap[playerXCoord, playerYCoord + 1].getTileType() == TileType.ENEMY)
+                {
+                    enemyDirection = ControlDirection.DOWN; // down
+                }
+            }
+
+            return enemyDirection;
+
+        }
+
+
+        static Enemy getAdjacentEnemy(Enemy[] enemiesArray)
+        {
+            bool isEnemyAdjacent = enemyIsAdjacent();
+            int enemyXLoc = 0;
+            int enemyYLoc = 0;
+            ControlDirection enemyDirection = ControlDirection.NULL;
+            Enemy toReturn = null;
+
+            if (isEnemyAdjacent)
+            {
+                enemyDirection = whereIsEnemy();
+
+                if (enemyDirection == ControlDirection.UP) // up
+                {
+                    enemyXLoc = playerXCoord;
+                    enemyYLoc = playerYCoord - 1; 
+                }
+                else if (enemyDirection == ControlDirection.LEFT) // left
+                {
+                    enemyXLoc = playerXCoord - 1;
+                    enemyYLoc = playerYCoord;
+                }
+                else if (enemyDirection == ControlDirection.RIGHT) // right
+                {
+                    enemyXLoc = playerXCoord + 1;
+                    enemyYLoc = playerYCoord;
+                }
+                else if (enemyDirection == ControlDirection.DOWN) // down
+                {
+                    enemyXLoc = playerXCoord;
+                    enemyYLoc = playerYCoord + 1;
+                }
+
+                for (int i = 0; i < enemiesArray.Length; i++)
+                {
+                    if (enemiesArray[i].GetPosX() == enemyXLoc && enemiesArray[i].GetPosY() == enemyYLoc)
+                    {
+                        toReturn = enemiesArray[i];
+                    }
+
+                }
+            }
+            
+            return toReturn;
+
+        }
 
         //create the array of MapTiles that represent the in game map
         static void createMap()
@@ -1415,7 +1629,7 @@ namespace Programming1FinalProject
             theMap[1, 17] = new MapTile(1, 17, TileType.GRASS);
             theMap[1, 18] = new MapTile(1, 18, TileType.GRASS);
             theMap[1, 19] = new MapTile(1, 19, TileType.GRASS);
-            theMap[1, 20] = new MapTile(1, 20, TileType.GRASS);
+            theMap[1, 20] = new MapTile(1, 20, TileType.ITEMBOX);
             theMap[1, 21] = new MapTile(1, 21, TileType.GRASS);
             theMap[1, 22] = new MapTile(1, 22, TileType.GRASS);
             theMap[1, 23] = new MapTile(1, 23, TileType.GRASS);
@@ -2322,6 +2536,7 @@ namespace Programming1FinalProject
             theMap[29, 27] = new MapTile(29, 27, TileType.GRASS);
             theMap[29, 28] = new MapTile(29, 28, TileType.GRASS);
             theMap[29, 29] = new MapTile(29, 29, TileType.SAFEZONE);
+            theMap[29, 29].setIsVisible(true);
 
 
 
