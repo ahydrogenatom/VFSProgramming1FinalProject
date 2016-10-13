@@ -67,7 +67,7 @@ namespace Programming1FinalProject
                                     new Enemy(26, 29),
                                     new Enemy(29, 26)};
 
-            Enemy E1 = new Enemy(2, 4);
+            //Enemy E1 = new Enemy(2, 4);
             // end - checking enemy movement
 
             //TEST print a test map of all grass
@@ -129,7 +129,53 @@ namespace Programming1FinalProject
                 //check if a key was available and pressed
                 if (Console.KeyAvailable)
                 {
+                    int[] enemyX = new int[17];
+                    int[] enemyY = new int[17];
 
+                    int[] enemiesNextTileUp = new int[17];
+                    int[] enemiesNextTileDown = new int[17];
+                    int[] enemiesNextTileLeft = new int[17];
+                    int[] enemiesNextTileRight = new int[17];
+
+                    foreach (int i in enemyX)
+                    { enemyX[i] = enemiesArray[i].GetPosX(); }
+                    foreach (int i in enemyY)
+                    { enemyY[i] = enemiesArray[i].GetPosY(); }
+
+                    foreach (int i in enemiesNextTileUp)
+                    { enemiesNextTileUp[i] = enemyY[i] + 1; }
+                    foreach (int i in enemiesNextTileDown)
+                    { enemiesNextTileDown[i] = enemyY[i] - 1; }
+                    foreach (int i in enemiesNextTileLeft)
+                    { enemiesNextTileLeft[i] = enemyX[i] - 1; }
+                    foreach (int i in enemiesNextTileRight)
+                    { enemiesNextTileRight[i] = enemyX[i] + 1; }
+
+                    foreach (int i in enemyX)
+                    {
+                        if (enemyX[i] == 0)
+                        {
+                            enemiesNextTileLeft[i] = enemyX[i];
+                        }
+                        if (enemyX[i] == (xDimensions - 1))
+                        {
+                            enemiesNextTileRight[i] = enemyX[i];
+                        }
+                    }
+
+                    foreach (int i in enemyY)
+                    {
+                        if (enemyY[i] == 0)
+                        {
+                            enemiesNextTileUp[i] = enemyY[i];
+                        }
+                        if (enemyY[i] == (yDimensions - 1))
+                        {
+                            enemiesNextTileDown[i] = enemyY[i];
+                        }
+                    }
+
+                    /*
                     int E1X = E1.GetPosX();
                     int E1Y = E1.GetPosY();
 
@@ -155,7 +201,7 @@ namespace Programming1FinalProject
                     {
                         enemyNextTileUp = E1Y;
                     }
-
+                    */
 
                     ConsoleKeyInfo currentKey = Console.ReadKey(true);
                     //player goes UP
@@ -165,23 +211,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
 
                         setCharacterPosition(playerXCoord, playerYCoord - 1);
-
-                        
-
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-
-                        drawMap();
+                        //drawMap();
                     }
 
                     //player goes RIGHT
@@ -191,22 +221,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
 
                         setCharacterPosition(playerXCoord + 1, playerYCoord);
-
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-
-
-                        drawMap();
+                        //drawMap();
                     }
 
                     //player goes LEFT
@@ -216,21 +231,7 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
 
                         setCharacterPosition(playerXCoord - 1, playerYCoord);
-
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
-
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
-
-                        // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-
-                        drawMap();
+                        //drawMap();
                     }
 
                     //player goes DOWN
@@ -240,23 +241,47 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord,playerYCoord].getTileType());
 
                         setCharacterPosition(playerXCoord, playerYCoord + 1);
+                        //drawMap();
+                    }
 
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
+                    for (int i = 0; i < enemiesArray.Length; i++)
+                    {
+                        enemiesArray[i].MoveEnemy(playerXCoord, playerYCoord, theMap[enemyX[i], enemiesNextTileUp[i]], theMap[enemyX[i], enemiesNextTileDown[i]], theMap[enemiesNextTileLeft[i], enemyY[i]], theMap[enemiesNextTileRight[i], enemyY[i]]);
 
-                        // Get new position of enemy
-                        int E1NewX = E1.GetPosX();
-                        int E1NewY = E1.GetPosY();
+                        int enemyNewX = enemiesArray[i].GetPosX();
+                        int enemyNewY = enemiesArray[i].GetPosY();
 
                         // Change tile where enemy moves to enemy type
-                        theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
+                        theMap[enemyNewX, enemyNewY].setTileType(TileType.ENEMY);
 
-                        // Change tile that enemy was on back to original
-                        theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-
-
-                        drawMap();
+                        if (enemyNewX == enemyX[i] && enemyNewY == enemyY[i])
+                        { }
+                        else
+                        {
+                            // Change tile that enemy was on back to original
+                            theMap[enemyX[i], enemyY[i]].setTileType(theMapOriginal[enemyX[i], enemyY[i]].getTileType());
+                        }
                     }
+
+                    // Move enemy every time the player moves
+               //     E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
+
+                    // Get new position of enemy
+               //     int E1NewX = E1.GetPosX();
+               //     int E1NewY = E1.GetPosY();
+
+                    // Change tile where enemy moves to enemy type
+               //     theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
+
+               //     if (E1NewX == E1X && E1NewY == E1Y)
+               //     { }
+               //     else
+               //     {
+                        // Change tile that enemy was on back to original
+               //         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
+               //     }
+
+                    drawMap();
                 }
             }
             

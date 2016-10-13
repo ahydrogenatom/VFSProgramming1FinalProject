@@ -26,7 +26,7 @@ namespace Programming1FinalProject
             m_iEnemyPosX = iPosX; // the x position that the enemy spawns in
             m_iEnemyPosY = iPosY; // the y position that the enemy spawns in
 
-            m_iRangeOfSight = 3; // the range that the enemy can see around them in
+            m_iRangeOfSight = 2; // the range that the enemy can see around them in
     }
 
         // Defining a health getter function so that the enemy can return its name
