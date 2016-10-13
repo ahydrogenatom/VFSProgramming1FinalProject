@@ -163,10 +163,12 @@ namespace Programming1FinalProject
                     {
                         //set the space under the player back to what it was on the map
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
+                        theMap[playerXCoord, playerYCoord].checkPassable();
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord, playerYCoord - 1);
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
-                        
 
                         // Move enemy every time the player moves
                         E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
@@ -177,9 +179,13 @@ namespace Programming1FinalProject
 
                         // Change tile where enemy moves to enemy type
                         theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
+                        theMap[E1NewX, E1NewY].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         // Change tile that enemy was on back to original
                         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
+                        theMap[E1X, E1Y].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         drawMap();
                     }
@@ -189,11 +195,14 @@ namespace Programming1FinalProject
                     {
                         //set the space under the player back to what it was on the map
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
+                        theMap[playerXCoord, playerYCoord].checkPassable();
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord + 1, playerYCoord);
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
-                        // Move enemy every time the player moves
-                        E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
+                       // Move enemy every time the player moves
+                       E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
 
                         // Get new position of enemy
                         int E1NewX = E1.GetPosX();
@@ -201,10 +210,12 @@ namespace Programming1FinalProject
 
                         // Change tile where enemy moves to enemy type
                         theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
-
+                        theMap[E1NewX, E1NewY].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
                         // Change tile that enemy was on back to original
                         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
-
+                        theMap[E1X, E1Y].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         drawMap();
                     }
@@ -214,9 +225,11 @@ namespace Programming1FinalProject
                     {
                         //set the space under the player back to what it was on the map
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
+                        theMap[playerXCoord, playerYCoord].checkPassable();
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord - 1, playerYCoord);
-
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
                         // Move enemy every time the player moves
                         E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
 
@@ -226,9 +239,13 @@ namespace Programming1FinalProject
 
                         // Change tile where enemy moves to enemy type
                         theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
+                        theMap[E1NewX, E1NewY].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         // Change tile that enemy was on back to original
                         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
+                        theMap[E1X, E1Y].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         drawMap();
                     }
@@ -238,9 +255,11 @@ namespace Programming1FinalProject
                     {
                         //set the space under the player back to what it was on the map
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord,playerYCoord].getTileType());
+                        theMap[playerXCoord, playerYCoord].checkPassable();
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
                         setCharacterPosition(playerXCoord, playerYCoord + 1);
-
+                        theMap[playerXCoord, playerYCoord].checkPassableEnemy();
                         // Move enemy every time the player moves
                         E1.MoveEnemy(playerXCoord, playerYCoord, theMap[E1X, enemyNextTileUp], theMap[E1X, enemyNextTileDown], theMap[enemyNextTileLeft, E1Y], theMap[enemyNextTileRight, E1Y]);
 
@@ -250,9 +269,13 @@ namespace Programming1FinalProject
 
                         // Change tile where enemy moves to enemy type
                         theMap[E1NewX, E1NewY].setTileType(TileType.ENEMY);
+                        theMap[E1NewX, E1NewY].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
                         // Change tile that enemy was on back to original
                         theMap[E1X, E1Y].setTileType(theMapOriginal[E1X, E1Y].getTileType());
+                        theMap[E1X, E1Y].checkPassable();
+                        theMap[E1NewX, E1NewY].checkPassableEnemy();
 
 
                         drawMap();
@@ -1284,7 +1307,7 @@ namespace Programming1FinalProject
             theMap[1, 4] = new MapTile(1, 4, TileType.GRASS);
             theMap[1, 5] = new MapTile(1, 5, TileType.GRASS);
             theMap[1, 6] = new MapTile(1, 6, TileType.GRASS);
-            theMap[1, 7] = new MapTile(1, 7, TileType.GRASS);
+            theMap[1, 7] = new MapTile(1, 7, TileType.ITEMBOX);
             theMap[1, 8] = new MapTile(1, 8, TileType.GRASS);
             theMap[1, 9] = new MapTile(1, 9, TileType.ROCK);
             theMap[1, 10] = new MapTile(1, 10, TileType.ROCK);
@@ -2294,7 +2317,7 @@ namespace Programming1FinalProject
             tileUnderPlayer = theMap[newX, newY];
             theMap[newX, newY].setTileType(TileType.PLAYER);
 
-            setMapVisibility(newX, newY, 4);
+            setMapVisibility(newX, newY, 2);
 
             playerXCoord = newX;
             playerYCoord = newY;
