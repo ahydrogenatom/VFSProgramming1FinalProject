@@ -50,6 +50,25 @@ namespace Programming1FinalProject
 
         }
 
+        //sets passability for player
+        public void checkPassable()
+        {
+            if(myType == TileType.GRASS || myType == TileType.ROAD || myType == TileType.ITEMBOX || myType == TileType.SAFEZONE)
+            {
+                isPassable = true;
+            }
+            else isPassable = false;
+        }
+
+        public void checkPassableEnemy()
+        {
+            if (myType == TileType.GRASS || myType == TileType.ROAD)
+            {
+                isEnemyPassable = true;
+            }
+            else isEnemyPassable = false;
+        }
+
         //GETTERS & SETTERS
 
         public void setXCoord(int x)
