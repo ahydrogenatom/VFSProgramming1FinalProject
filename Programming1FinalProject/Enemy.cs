@@ -158,7 +158,7 @@ namespace Programming1FinalProject
 
                     Random randomDirection = new Random();
 
-
+                    //choosing which direction to travel
                     if (iLeftOrRightOrEqual == 0)
                     {
                         if (iDownOrUpOrEqual == 0)
@@ -301,6 +301,7 @@ namespace Programming1FinalProject
             }
         }
 
+        //check if the player is within sight range of the slime
         public bool isPlayerInRange(int iPlayerX, int iPlayerY)
         {
             for (int iRangeStep = 0; iRangeStep <= m_iRangeOfSight; iRangeStep++)

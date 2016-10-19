@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//MapTile class holds all information pertaining to the spaces that make up
+//the game world that the player traverses.
+
 namespace Programming1FinalProject
 {
     class MapTile
@@ -12,16 +15,19 @@ namespace Programming1FinalProject
         //PRIVATE MEMBER VARIABLES
 
         //COORDS
-        private int xCoord;
-        private int yCoord;
+        private int iXCoord;
+        private int iYCoord;
 
-        private TileType myType;
+        private TileType eMyTypemyType;
 
-        private bool isPassable = false;
+        //is the tile passable for the player
+        private bool bIsPassable = false;
 
-        private bool isEnemyPassable = false;
+        //is the tile passable for the slimes
+        private bool bIsEnemyPassable = false;
 
-        private bool isVisible;
+        //is the tile within the player's line of sight
+        private bool bIsVisible;
 
 
         //CONSTRUCTOR
@@ -33,94 +39,105 @@ namespace Programming1FinalProject
             setTileType(newTileType);
 
             //set if the tile is passable for the player
-            if (myType == TileType.GRASS || myType == TileType.ROAD || myType == TileType.ITEMBOX || myType == TileType.SAFEZONE)
+            if (eMyTypemyType == TileType.GRASS || eMyTypemyType == TileType.ROAD || eMyTypemyType == TileType.ITEMBOX || eMyTypemyType == TileType.SAFEZONE)
             {
-                isPassable = true;
+                bIsPassable = true;
             }
-            else isPassable = false;
+            else bIsPassable = false;
 
             //set if the tile is passable for the enemies
-            if (myType == TileType.GRASS || myType == TileType.ROAD)
+            if (eMyTypemyType == TileType.GRASS || eMyTypemyType == TileType.ROAD)
             {
-                isEnemyPassable = true;
+                bIsEnemyPassable = true;
             }
-            else isEnemyPassable = false;
+            else bIsEnemyPassable = false;
 
-            isVisible = false;
+            bIsVisible = false;
 
         }
 
         //sets passability for player
         public void checkPassable()
         {
-            if(myType == TileType.GRASS || myType == TileType.ROAD || myType == TileType.ITEMBOX || myType == TileType.SAFEZONE)
+            if(eMyTypemyType == TileType.GRASS || eMyTypemyType == TileType.ROAD || eMyTypemyType == TileType.ITEMBOX || eMyTypemyType == TileType.SAFEZONE)
             {
-                isPassable = true;
+                bIsPassable = true;
             }
-            else isPassable = false;
+            else bIsPassable = false;
         }
 
+        //updates to check if the enemy can pass the tile
+        //used when tiles change on the map to make sure the slimes are responding correctly to the new tile
         public void checkPassableEnemy()
         {
-            if (myType == TileType.GRASS || myType == TileType.ROAD)
+            if (eMyTypemyType == TileType.GRASS || eMyTypemyType == TileType.ROAD)
             {
-                isEnemyPassable = true;
+                bIsEnemyPassable = true;
             }
-            else isEnemyPassable = false;
+            else bIsEnemyPassable = false;
         }
 
         //GETTERS & SETTERS
 
+        //sets X coordinate of the MapTile
         public void setXCoord(int x)
         {
-            xCoord = x;
+            iXCoord = x;
         }
 
+        //sets Y coordinate of the MapTile
         public void setYCoord(int y)
         {
-            yCoord = y;
+            iYCoord = y;
         }
 
+        //sets the TileType of the MapTile
         public void setTileType(TileType newType)
         {
-            myType = newType;
+            eMyTypemyType = newType;
         }
 
+        //sets whether or not the tile is visible
+        //invisible tiles will show up as a "fog of war" tile on the map
         public void setIsVisible(bool visibility)
         {
-            isVisible = visibility;
+            bIsVisible = visibility;
         }
 
-
+        //returns the X coordinate
         public int getXCoord()
         {
-            return xCoord;
+            return iXCoord;
         }
 
+        //returns the Y coordinate
         public int getYCoord()
         {
-            return yCoord;
+            return iYCoord;
         }
 
+        //returns the TileType
         public TileType getTileType()
         {
-            return myType;
+            return eMyTypemyType;
         }
 
+        //returns whether or not the player can pass through the tile
         public bool getPassable()
         {
-            return isPassable;
+            return bIsPassable;
         }
 
+        //returns whether or not the slimes can pass through the tile
         public bool getIsEnemyPassable()
         {
-            return isEnemyPassable;
+            return bIsEnemyPassable;
         }
 
-           
+        //returns whether or not the tile is visible
         public bool getIsVisible()
         {
-            return isVisible;
+            return bIsVisible;
         }
 
         

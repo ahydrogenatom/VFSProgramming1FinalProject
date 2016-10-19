@@ -465,6 +465,7 @@ namespace Programming1FinalProject
             int enemyX = enemies[enemyID].GetPosX();
             int enemyY = enemies[enemyID].GetPosY();
 
+            //change where the slime was on the map to a grass tile
             theMap[enemyX, enemyY].setTileType(TileType.GRASS);
             theMap[enemyX, enemyY].checkPassable();
 
@@ -525,7 +526,7 @@ namespace Programming1FinalProject
         }
 
 
-        //check where enemy is
+        //check where enemy is in relation to the player
         static ControlDirection whereIsEnemy()
         {
             ControlDirection enemyDirection = ControlDirection.NULL;
@@ -566,7 +567,7 @@ namespace Programming1FinalProject
 
         }
 
-
+        //finds and returns an enemy slime that is beside the player
         static Enemy getAdjacentEnemy(Enemy[] enemiesArray)
         {
             bool isEnemyAdjacent = enemyIsAdjacent();
@@ -575,10 +576,14 @@ namespace Programming1FinalProject
             ControlDirection enemyDirection = ControlDirection.NULL;
             Enemy toReturn = null;
 
+            //check to see if there exists a slime beside the player
             if (isEnemyAdjacent)
             {
+
+                //find out which direction the enemy is in relative to the player
                 enemyDirection = whereIsEnemy();
 
+                //check against the direction the enemy is in
                 if (enemyDirection == ControlDirection.UP) // up
                 {
                     enemyXLoc = playerXCoord;
@@ -600,6 +605,7 @@ namespace Programming1FinalProject
                     enemyYLoc = playerYCoord + 1;
                 }
 
+                //based on coordinates, select correct enemy from the list of enemies
                 for (int i = 0; i < enemiesArray.Length; i++)
                 {
                     if (enemiesArray[i].GetPosX() == enemyXLoc && enemiesArray[i].GetPosY() == enemyYLoc)
@@ -617,18 +623,14 @@ namespace Programming1FinalProject
         //create the array of MapTiles that represent the in game map
         static void createMap()
         {
-            //TESTING: getting map from file
-            //string mapFromTxt = Properties.Resources.mapText;
-
-
-
-
             theMapOriginal = new MapTile[xDimensions, yDimensions];
 
             theMap = new MapTile[xDimensions, yDimensions];
             // GRASS, ROAD, ROCK, ITEMBOX, WATER, START, SAFEZONE, PLAYER, ENEMY, FOG
 
             //create copy of the original map
+            //the original map is for changing tiles back when they are
+            //temporarily altered
             theMapOriginal[0, 0] = new MapTile(0, 0, TileType.START);
             theMapOriginal[0, 1] = new MapTile(0, 1, TileType.GRASS);
             theMapOriginal[0, 2] = new MapTile(0, 2, TileType.GRASS);
@@ -2736,6 +2738,9 @@ namespace Programming1FinalProject
                     currentMapTile = theMap[i, j];
                     currentTileType = currentMapTile.getTileType();
 
+
+                    //check if a tile is in player visibility range
+                    //if not, draw it as fog of war
                     if (currentMapTile.getIsVisible() == false)
                     {
                         using (var graphics = Graphics.FromHwnd(windowHandler))
@@ -2743,6 +2748,7 @@ namespace Programming1FinalProject
                             graphics.DrawImage(image, i * 16, j * 16, imageSizeX, imageSizeY);
                     }
 
+                    //if the tile is visible, call the correct resource and draw it to the screen
                     else
                     {
                         switch (currentTileType)
@@ -2845,7 +2851,7 @@ namespace Programming1FinalProject
     }
 }
 
-
+//used before the map was implemented
 /* RANDOM GENERATION OF MAP
 int randomNum;
 TileType newTile = TileType.GRASS;
