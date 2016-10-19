@@ -47,6 +47,16 @@ namespace Programming1FinalProject
 
         private static Random RNG;
 
+
+
+
+
+
+
+
+
+
+
         //static Enemy[] enemiesArray = new Enemy[17];
 
         static void Main(string[] args)
@@ -115,6 +125,8 @@ namespace Programming1FinalProject
             {
                 drawMap();
             }
+
+
 
             // start - checking enemy movement
             //theMap[E1X, E1Y] = new MapTile(E1X, E1Y, TileType.ENEMY);
