@@ -88,14 +88,14 @@ namespace Programming1FinalProject
             Console.ReadLine();
 
             
-                createMap();
+            createMap();
 
             drawMap();
 
             RNG = new Random();
 
-            Console.SetCursorPosition(60, 60);
-           // Console.WriteLine("Press enter to start the game");
+            //Console.SetCursorPosition(60, 60);
+            //Console.WriteLine("Press enter to start the game");
            // Console.ReadLine();
 
             isPlaying = true;
@@ -425,7 +425,15 @@ namespace Programming1FinalProject
                             
                         }
                     }
+
+
                     drawMap();
+
+
+                    printStats();
+
+                    
+                    
                 }
 
                 if((playerXCoord == 29) && (playerYCoord == 29))
@@ -438,6 +446,17 @@ namespace Programming1FinalProject
             Console.WriteLine("You have survived the dusk!");
             Console.ReadLine();
             
+        }
+
+        //prints out player stats beside the map
+        static void printStats()
+        {
+            //insert player stats here
+            Console.SetCursorPosition(61, 0);
+            Console.WriteLine("Health: 5");
+            Console.SetCursorPosition(61, 1);
+            Console.WriteLine("Attack: 2");
+
         }
 
         //removes an enemy from the map
