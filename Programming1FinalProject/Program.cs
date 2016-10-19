@@ -27,7 +27,7 @@ namespace Programming1FinalProject
         [DllImport("kernel32.dll", EntryPoint = "GetConsoleWindow", SetLastError = true)]
         private static extern IntPtr GetConsoleHandle();
 
-
+        static Player dusker;
 
 
         //PRIVATE MEMBER VARIABLES
@@ -47,23 +47,15 @@ namespace Programming1FinalProject
 
         private static Random RNG;
 
-
-
-
-
-
-
-
-
-
-
         //static Enemy[] enemiesArray = new Enemy[17];
 
         static void Main(string[] args)
         {
+            dusker = new Player(20, 2);
+
             // start - checking enemy movement
             // create an array of enemies with their starting locations
-           Enemy[] enemiesArray = { new Enemy(2, 3, 0),
+            Enemy[] enemiesArray = { new Enemy(2, 3, 0),
                                     new Enemy(9, 0, 1),
                                     new Enemy(14, 4, 2),
                                     new Enemy(6, 10, 3),
@@ -137,9 +129,6 @@ namespace Programming1FinalProject
 
                 //structure into specific actions
 
-                
-
-
                 //character controls
 
                 //check if a key was available and pressed
@@ -191,33 +180,7 @@ namespace Programming1FinalProject
                         }
                     }
 
-                    /*
-                    int E1X = E1.GetPosX();
-                    int E1Y = E1.GetPosY();
 
-                    int enemyNextTileUp = E1Y + 1;
-                    int enemyNextTileDown = E1Y - 1;
-
-                    int enemyNextTileLeft = E1X - 1;
-                    int enemyNextTileRight = E1X + 1;
-
-                    if (E1X == 0)
-                    {
-                        enemyNextTileLeft = E1X;
-                    }
-                    if (E1X == (xDimensions - 1))
-                    {
-                        enemyNextTileRight = E1X;
-                    }
-                    if (E1Y == 0)
-                    {
-                        enemyNextTileDown = E1Y;
-                    }
-                    if (E1Y == (yDimensions - 1))
-                    {
-                        enemyNextTileUp = E1Y;
-                    }
-                    */
 
                     ConsoleKeyInfo currentKey = Console.ReadKey(true);
 
@@ -237,7 +200,7 @@ namespace Programming1FinalProject
                             
                             printCombatMenu();
                             
-                            Console.WriteLine("Current Player HP: 5");
+                            Console.WriteLine("Current Player HP: " + dusker.GetHealth());
                             Console.WriteLine("Current Slime HP: " + currentOpponent.GetHealth());
                             bool validCombatAction = false;
                             //loop until valid combat selection is given
@@ -255,21 +218,21 @@ namespace Programming1FinalProject
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - (dusker.GetDamage() + 1));
                                                 Console.WriteLine("You land a perfect hit!");
                                             }
                                             else if(combatOutcome == 2)
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - dusker.GetDamage());
                                                 Console.WriteLine("You land a glancing blow!");
                                             }
                                             else
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.SETHEALTH()
-                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                dusker.SetHealth(dusker.GetHealth() - (currentOpponent.GetDamage()));
                                                 Console.WriteLine("You miss, and the slime covers you in acid!");
                                             }
                                             validCombatAction = true;
@@ -284,21 +247,21 @@ namespace Programming1FinalProject
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - (dusker.GetDamage() + 1));
                                                 Console.WriteLine("You land a perfect hit!");
                                             }
                                             else if (combatOutcome == 2)
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - dusker.GetDamage());
                                                 Console.WriteLine("You land a glancing blow!");
                                             }
                                             else
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.SETHEALTH()
-                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                dusker.SetHealth(dusker.GetHealth() - (currentOpponent.GetDamage()));
                                                 Console.WriteLine("You miss, and the slime covers you in acid!");
                                             }
                                             validCombatAction = true;
@@ -313,21 +276,21 @@ namespace Programming1FinalProject
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 2);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - (dusker.GetDamage() + 1));
                                                 Console.WriteLine("You land a perfect hit!");
                                             }
                                             else if (combatOutcome == 2)
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.GETDAMAGE()
-                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - 1);
+                                                currentOpponent.SetHealth(currentOpponent.GetHealth() - dusker.GetDamage());
                                                 Console.WriteLine("You land a glancing blow!");
                                             }
                                             else
                                             {
                                                 //TODO
                                                 //INPUT CHARACTER.SETHEALTH()
-                                                //Character.SetHealth(Character.GetHealth - (Enemy.GetDamage())
+                                                dusker.SetHealth(dusker.GetHealth() - (currentOpponent.GetDamage()));
                                                 Console.WriteLine("You miss, and the slime covers you in acid!");
                                             }
                                             validCombatAction = true;
@@ -342,7 +305,13 @@ namespace Programming1FinalProject
                                         }
                                 }
 
-                                if(currentOpponent.GetHealth() <= 0)
+                                if (dusker.IsPlayerDead())
+                                {
+                                    outOfCombat = true;
+                                    dusker.SetHealth(0);
+                                }
+
+                                    if (currentOpponent.GetHealth() <= 0)
                                 {
                                     killEnemy(currentOpponent.GetEnemyID(), enemiesArray);
                                     Console.WriteLine("You have slain the mighty slime!");
@@ -354,6 +323,7 @@ namespace Programming1FinalProject
                         for (int i = 0; i < 10; i++)
                         {
                             drawMap();
+                            
                         }
                     }
 
@@ -364,6 +334,8 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
                         theMap[playerXCoord, playerYCoord].checkPassable();
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
+
+                        getItemBox(0, -1);
 
                         setCharacterPosition(playerXCoord, playerYCoord - 1);
                         //drawMap();
@@ -377,6 +349,8 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassable();
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
+                        getItemBox(1, 0);
+
                         setCharacterPosition(playerXCoord + 1, playerYCoord);
                         //drawMap();
                     }
@@ -388,6 +362,8 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].setTileType(theMapOriginal[playerXCoord, playerYCoord].getTileType());
                         theMap[playerXCoord, playerYCoord].checkPassable();
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
+
+                        getItemBox(-1, 0);
 
                         setCharacterPosition(playerXCoord - 1, playerYCoord);
                         //drawMap();
@@ -401,9 +377,12 @@ namespace Programming1FinalProject
                         theMap[playerXCoord, playerYCoord].checkPassable();
                         theMap[playerXCoord, playerYCoord].checkPassableEnemy();
 
+                        getItemBox(0, 1);
+
                         setCharacterPosition(playerXCoord, playerYCoord + 1);
                         //drawMap();
                     }
+
 
                     for (int i = 0; i < enemiesArray.Length; i++)
                     {
@@ -438,10 +417,10 @@ namespace Programming1FinalProject
                         }
                     }
 
-
-                    drawMap();
-
-
+                    if (dusker.IsPlayerDead() == false)
+                    {
+                        drawMap();
+                    }
                     printStats();
 
                     
@@ -451,13 +430,50 @@ namespace Programming1FinalProject
                 if((playerXCoord == 29) && (playerYCoord == 29))
                 {
                     isPlaying = false;
+                    Console.Clear();
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("You have survived the dusk!");
+                    Console.ReadLine();
                 }
+
+                if (dusker.IsPlayerDead())
+                {
+                    Console.Clear();
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("You were consumed by the DUSK");
+                    Console.ReadLine();
+                    isPlaying = false;
+                }
+
+
             }
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine("You have survived the dusk!");
-            Console.ReadLine();
             
+            
+        }
+
+
+
+        static void getItemBox(int plusX, int plusY)
+        {
+            if (theMap[playerXCoord + plusX, playerYCoord + plusY].getTileType() == TileType.ITEMBOX)
+            {
+                // check if players health is less than max health -> CONDITION: dusker.GetHealth() < dusker.GetMaxHealth()
+                if (dusker.GetHealth() < dusker.GetMaxHealth())
+                {
+                    // if so then heal
+                    dusker.SetHealth(dusker.GetHealth() + 5);
+
+                    if (dusker.GetHealth() > dusker.GetMaxHealth())
+                    {
+                        dusker.SetHealth(dusker.GetMaxHealth());
+                    }
+                }
+                else
+                {
+                    dusker.SetDamage(dusker.GetDamage() + 1);
+                }
+                theMapOriginal[playerXCoord + plusX, playerYCoord + plusY].setTileType(TileType.GRASS);
+            }
         }
 
         //prints out player stats beside the map
@@ -465,9 +481,9 @@ namespace Programming1FinalProject
         {
             //insert player stats here
             Console.SetCursorPosition(61, 0);
-            Console.WriteLine("Health: 5");
+            Console.WriteLine("Health: " + dusker.GetHealth());
             Console.SetCursorPosition(61, 1);
-            Console.WriteLine("Attack: 2");
+            Console.WriteLine("Attack: " + dusker.GetDamage());
 
         }
 

@@ -8,16 +8,26 @@ namespace Programming1FinalProject
 {
     class Player
     {
-        private int m_iHealth; // the variable that holds the health value of the enemy
-        private int m_iDamage; // the variable that holds the damage value of the enemy
+        private int m_iHealth; // the variable that holds the health value of the player
+        private int m_iDamage; // the variable that holds the damage value of the player
 
-        private int m_iPlayerPosX; // the variable that holds the x position value of the enemy
-        private int m_iPlayerPosY; // the variable that holds the y position value of the enemy
-        private int m_iRangeOfSight; // the variable that holds the range of sight value of the enemy
-                                     //       private bool m_bIsVisible; // the variable that checks whether then player is visible to the enemy
+        private int m_iMaxHealth;
+
+        //private int m_iPlayerPosX; // the variable that holds the x position value of the player
+        //private int m_iPlayerPosY; // the variable that holds the y position value of the player
+        private int m_iRangeOfSight; // the variable that holds the range of sight value of the player
+
 
         private bool isAlive;
 
+
+        // Constructs an instance of the player with given Health and Damage
+        public Player(int iHealth, int iDamage)
+        {
+            m_iHealth = iHealth; // initial health value of the player
+            m_iDamage = iDamage; // initial damage value of the player
+            m_iMaxHealth = iHealth;
+        }
 
 
 
@@ -29,13 +39,10 @@ namespace Programming1FinalProject
         public int GetDamage()
         { return m_iDamage; }
 
-        // Defining a position X getter function so that the enemy can return its X position
-        public int GetPosX()
-        { return m_iPlayerPosX; }
+        // Defining a Maximum Health getter function so that the enemy can return its damage
+        public int GetMaxHealth()
+        { return m_iMaxHealth; }
 
-        // Defining a position Y getter function so that the enemy can return its Y position
-        public int GetPosY()
-        { return m_iPlayerPosY; }
 
         // Defining an enemy Range Of Sight getter function so that the enemy can return its enemy Range Of Sight
         public int GetRangeOfSight()
@@ -51,13 +58,7 @@ namespace Programming1FinalProject
         public void SetDamage(int value)
         { m_iDamage = value; }
 
-        // Defining a position X setter function so that the enemy can set its X position
-        public void SetPosX(int value)
-        { m_iPlayerPosX = value; }
 
-        // Defining a position Y setter function so that the enemy can set its Y position
-        public void SetPosY(int value)
-        { m_iPlayerPosY = value; }
 
         // Defining an enemy Range Of Sight setter function so that the enemy can set its enemy Range Of Sight
         public void SetRangeOfSight(int value)
